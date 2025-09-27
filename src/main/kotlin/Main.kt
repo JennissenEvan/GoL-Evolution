@@ -4,7 +4,6 @@ import fridge.lifebattle.board.Coordinates
 import fridge.lifebattle.board.LifeBoard
 import fridge.lifebattle.rule.Rule
 import fridge.lifebattle.rule.ruleFromString
-import javafx.animation.Animation
 import javafx.animation.Timeline
 import javafx.application.Application
 import javafx.scene.Scene
@@ -22,6 +21,9 @@ import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.CornerRadii
 import javafx.util.Duration
 import kotlin.random.Random
+
+const val BOARD_SIZE = 100
+const val INITIAL_CELL_RULE = "B1/S23"
 
 fun main() {
 //    val board = LifeBoard(200)
@@ -76,9 +78,9 @@ class App : Application() {
     private val canvas = Canvas(1000.0, 1000.0)
     val graphics: GraphicsContext = canvas.graphicsContext2D
 
-    val board = LifeBoard(100)
+    val board = LifeBoard(BOARD_SIZE)
     init {
-        board[Coordinates(0, 0)] = ruleFromString("B1/S23")
+        board[Coordinates(0, 0)] = ruleFromString(INITIAL_CELL_RULE)
     }
 
     val cellWidth = canvas.width / board.width
